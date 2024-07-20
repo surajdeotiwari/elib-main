@@ -1,0 +1,10 @@
+# Ignore Python bytecode files
+__pycache__
+*.pyc
+
+ignore database
+/instance
+
+# Ignore virtual environments
+.venv
+.env

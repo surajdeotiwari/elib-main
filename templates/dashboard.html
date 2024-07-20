@@ -1,0 +1,34 @@
+{%include 'headers.html'%}
+{%include 'navbar.html'%}
+<div class="container">
+    <p class="h3">Stats</p>
+    <table class="table table-bordered table-hover">
+        <th>Total Books</th>
+        <th>Total Authors</th>
+        <tr>
+            <td>
+                {{books}}
+            </td>
+            <td>
+                {{authors}}
+            </td>
+        </tr>
+    </table>
+    <div>
+        <p class="h3">Current Issues</p>
+        <table class="table table-bordered table-hover">
+            <th>Books id</th>
+            <th>Assigned to</th>
+            <tr>
+                {%for d in lst%}
+                <td>
+                    {{d.id}}
+                </td>
+                <td>
+                    {{d.assigned_to}}
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</div>

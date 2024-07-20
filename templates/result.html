@@ -1,0 +1,67 @@
+{%include 'headers.html'%}
+{%include 'navbar.html'%}
+<div class="container">
+    {%include 'search.html'%}
+    {%if current_user.is_authenticated%}
+    <span class="h3">Book</span>
+    {%if books|length > 0%}
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Book Type</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Publishing Year</th>
+                <th>PDF (Download)</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.book_name }}</td>
+                <td>{{ book.topic }}</td>
+                <td>{{ book.author.name }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.year }}</td>
+                <td><a class="btn btn-primary" href="http://localhost:5000/getPdfOfBook?id={{ book.id }}">Download</a></td>
+            </tr>
+        </table>
+    </div>
+    {%endfor%}
+    {%else%}
+    <div class="container bg-light">
+        <span class="h5 text-warning"><br>No Book of such name is present in Elib</span>
+    </div>
+    {%endif%}
+    <span class="h3">Author</span>
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover">
+            {%if authors|length > 0%}
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Biography</th>
+            {%for author in authors%}
+            <tr>
+                <td>
+                    {{author.name}}
+                </td>
+                <td>
+                    <img src="http://localhost:5000/getAuthorPhoto?id={{author.id}}" alt="{{author.name}}" class="img-author">
+                </td>
+                <td>
+                    {{author.bio}}
+                </td>
+            </tr>
+            {%endfor%}
+            {%else%}
+    </div>
+        <div class="container bg-light">
+            <span class="h5 text-warning"><br>No Author of such name is present in Elib</span>
+        </div>
+        {%endif%}
+        {%else%}
+        <span class="text-danger">You're not allowed to Search until you've sign-in</span>
+        {%endif%}
+    </table>
+</div>

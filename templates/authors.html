@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'headers.html' %}
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        {%include 'search.html'%}
+        {%if current_user.is_authenticated%}
+        {%if authors["authors"]|length > 0 %}
+        <table class="table table-bordered table-hover">
+            <th>Unique Id</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Biography</th>
+            {%for author in authors["authors"]%}
+            <tr>
+                <td>
+                    {{author.id}}
+                </td>
+                <td>
+                    {{author.name}}
+                </td>
+                <td>
+                    <img src="http://localhost:5000/getAuthorPhoto?id={{author.id}}" alt="{{author.name}}" class="img-author">
+                </td>
+                <td>
+                    {{author.bio}}
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+        {%else%}
+        <div class="container alert alert-danger">
+            <span class="text-dark">No Author is present in the platform.</span>
+        </div>
+        {%endif%}
+        {%else%}
+        <div class="container alert alert-danger">
+            <span class="text-dark">To see authors in the application you need to sign in.</span>
+        </div>
+        {%endif%}
+    </div>
+</body>
+<footer>
+    {% include 'footer.html' %}
+</footer>
+</html>

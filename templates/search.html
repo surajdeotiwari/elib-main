@@ -1,0 +1,7 @@
+<form class="input-group rounded" method="post" action="{{url_for('base.search_render')}}" validate>
+    <label for="query" class="form-label"></label>
+    <input class="form-control rounded" type="search" name="query" placeholder="Search Books/Author"
+        aria-label="Search" required>
+    <div class="invalid-feedback">Enter any book or author name</div>
+    <button class="btn btn-outline-danger" type="submit">Search</button>
+</form>

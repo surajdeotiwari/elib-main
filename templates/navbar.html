@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-4 align-top sticky-top">
+    <div class="container">
+        <a href="{{url_for('base.home_render')}}" class="navbar-brand">
+            <img src="../static/logo.png" alt="logo" class="logo"><span class="h6">Books in a Click</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-column" id="navbarNav">
+            <ul class="navbar-nav ms-auto flex-lg-row">
+                <li class="nav-item dropdown">
+                    {%if current_user.is_authenticated %}
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Actions
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="{{url_for('base.dashboard')}}" class="dropdown-item bg-success text-white">
+                            Dashboard
+                        </a>
+                        {%if current_user.user_type == 'Admin'%}
+                        <a href="{{url_for('base.addSection')}}" class="dropdown-item bg-secondary text-white">Add Section</a>
+                        <a href="{{url_for('base.author_uploads')}}" class="dropdown-item bg-secondary text-white">
+                            Add Authors
+                        </a>
+                        <a href="{{url_for('base.book_uploads')}}" class="dropdown-item bg-secondary text-white">
+                            Add Books
+                        </a>
+                        <a href="{{url_for('base.deleteBook')}}" class="dropdown-item bg-warning text-dark">
+                            Delete Books
+                        </a>
+                        <a href="{{url_for('base.deleteAuthor')}}" class="dropdown-item bg-warning text-dark">
+                            Delete Author
+                        </a>
+                        <a href="{{url_for('base.deleteSection')}}" class="dropdown-item bg-warning text-dark">
+                            Delete Section
+                        </a>
+                        <a href="{{url_for('base.editBook')}}" class="dropdown-item bg-primary text-white">
+                            Edit Books
+                        </a>
+                        <a href="{{url_for('base.editAuthor')}}" class="dropdown-item bg-primary text-white">
+                            Edit Author
+                        </a>
+                        <a href="{{url_for('base.approveBook')}}" class="dropdown-item bg-warning text-dark">
+                            Approve Book
+                        </a>
+                        {%endif%}
+                        <a href="{{url_for('base.requestBook')}}" class="dropdown-item bg-warning text-dark">
+                            Request Book
+                        </a>
+                        <a href="{{url_for('base.changePassword')}}" class="dropdown-item">
+                            Change Password
+                        </a>
+                    </div>
+                </li>
+                {%endif%}
+                <li class="nav-item">
+                    <a href="{{url_for('base.book_render')}}" class="nav-link">
+                        Books
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('base.author_render')}}" class="nav-link">
+                        Authors
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('base.userdashboard')}}" class="nav-link">
+                        Dashboard
+                    </a>
+                </li>
+                {%if not current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Login/Register
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{url_for('login.return_admin_login_page')}}" class="nav-link">Admin Login</a>
+                        <a class="dropdown-item" href="{{url_for('login.return_user_login_page')}}" class="nav-link">User Login</a>
+                        <a class="dropdown-item" href="{{url_for('signup.return_admin_signup_page')}}" class="nav-link">Admin Register</a>
+                        <a class="dropdown-item" href="{{url_for('signup.return_user_signup_page')}}" class="nav-link">User Register</a>
+                    </div>
+                </li>
+                {%endif%}
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{{ url_for('base.logout') }}" class="btn btn-warning   ">Log Out</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+    <!-- <span>📚 The largest truly open library in human history. ⭐️ We mirror Sci-Hub and LibGen. We scrape and open-source Z-Lib,Internet Archive Lending Library, DuXiu, and more.</span> -->
+</nav>

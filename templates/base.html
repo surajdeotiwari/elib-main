@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'headers.html' %}
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-danger d-flex justify-content-between align-items-center">
+            <span class="">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+            </span>
+            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endwith %}
+        <span class="h3">Welcome to Elib</span>
+        <p>Elib is a cutting-edge approach to library management that offers unmatched simplicity and efficiency suited to a
+        variety of library settings.
+        </p>
+        <p>
+            Elib's user-friendly interface and extensive feature set reinvent library operations, whether managing large university
+            libraries, lively public spaces, or small community collections.
+            With the help of our platform, administrators and librarians may perform difficult jobs with ease, such as organizing
+            smooth circulation procedures and classifying large collections. Elib improves efficiency and patron happiness by
+            revolutionizing the library administration experience with its user-centric design and robust features.
+        </p>
+        <p>
+            Fundamental to Elib is a dedication to innovation and accessibility, making it possible for libraries of all sizes to
+            prosper in the digital era. Our platform offers customisable solutions that can be tailored to meet changing needs and
+            meets the specific needs of each institution. Through the utilization of cutting-edge technology and data-driven
+            insights, Elib provides libraries with the necessary resources to remain innovative and provide outstanding services to
+            their local communities.
+        </p>
+
+        <p>
+            With Elib, discover the library management of the future and open up new avenues for the prosperity of your library. Get
+            in touch with us right now to arrange a demo and learn how Elib can transform the way your library runs while giving you
+            the confidence to confidently accomplish your objectives.
+        </p>
+        <span class="h3">Key Features:</span>
+        <ul>
+            <li>Catalog Management</li>
+            <li>User Management</li>
+            <li>Circulation Management</li>
+            <li>Search and Discovery</li>
+            <li>Reporting and Analytics</li>
+            <li>Integration and Customization</li>
+            <li>Accessibility and Security</li>
+            <li>Machine Learning Solutions</li>
+        </ul>
+        <span class="h3">Benefits:</span>
+        <ul>
+            <li>Efficiency</li>
+            <li>Accuracy</li>
+            <li>Engagement</li>
+            <li>Insights</li>
+            <li>Scalability</li>
+        </ul>
+        <p>Transform your library operations with our innovative Library Management Tool. Schedule a demo today to
+            discover how our
+            comprehensive features streamline catalog and circulation management, empower user engagement, and provide
+            insightful
+            analytics. Join libraries worldwide benefiting from our user-friendly interface and customizable solutions.
+            Don't let
+            outdated systems hinder your library's potential. Embrace efficiency, accessibility, and security with our
+            cutting-edge
+            software. Contact us now to revolutionize your library experience.</p>
+        <span class="h3">Technical Overview</span>
+        <ul>
+            <img src="../static/database-elib.png" alt="database" class="img-fluid">
+            <p>
+                Important user information including an ID, photo, username, email, type (staff or student, for example), branch (if
+                relevant), phone number, and fine balance are all captured by the user model. User administration and authentication
+                within the system are made easier by this architecture.
+            <p>
+
+                The Books model is a representation of individual books in the library that holds information about each book, including
+                its title, author, publisher, date of release, image, file location, reservation status, issue date, return deadline,
+                topic, and bio.
+                This paradigm makes it possible to organize, track, and catalog library resources effectively.
+
+            </p>
+            <p>
+                Book authors' names, biographies, and photo paths are all stored in the Author model.
+                This paradigm makes it easier for books to be associated with their individual authors and improves the browsing
+                experience for people who are interested in the works of particular writers.
+            </p>
+            <p>
+                Last but not least, user activity logs, comprising usernames, user IDs, and timestamps for login and logout, are
+                recorded by the Logs model. The insights this model offers regarding user behavior and usage patterns of the system help
+                with system security and monitoring.
+            </p>
+            <p>
+                All things considered, the supplied code establishes the framework for a strong library management system, giving
+                administrators the ability to effectively arrange library materials, oversee user accounts, and keep an eye on system
+                activity.
+            </p>
+            </p>
+        </ul>
+        {%include 'api.html'%}
+    </div>
+</body>
+<footer>{%include 'footer.html'%}</footer>
+</html>
